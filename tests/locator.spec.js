@@ -11,7 +11,10 @@ await page.locator('#password').fill('secret_sauce');
 await page.click("//input[@name='login-button']");
 await expect(page).toHaveURL(/inventory.html/);
 await expect(page.locator('.title')).toHaveText('Products');
- console.log(await page.locator('.title').textContent());
+
+//Code changed to use locator instead of getByText
+const pageTitle = await page.locator('.title').textContent();
+console.log(pageTitle);
 
  await expect(page.locator("//div[text()='Sauce Labs Backpack']")).toBeVisible();
      
